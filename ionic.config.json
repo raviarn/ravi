@@ -1,0 +1,8 @@
+{
+  "name": "Started",
+  "app_id": "efb09643",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
