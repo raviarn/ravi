@@ -5,6 +5,8 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
 import { LoginIonicPage } from '../pages/login-ionic/login-ionic';
+import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,15 +19,19 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = ListPage;
+
   pages: Array<{title: string, component: any}>;
+  rootPage: any;
+  user: any;
 
   constructor(
     public platform: Platform,
+    afAuth: AngularFireAuth,
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen
-  ) {
+  ) 
+  {
     this.initializeApp();
 
     // set our app's pages
@@ -34,6 +40,19 @@ export class MyApp {
       { title: 'My First List', component: ListPage },
       { title: 'User Login Page', component: LoginIonicPage }
     ];
+
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+        if (!user) 
+	{
+           this.rootPage = HelloIonicPage;
+           unsubscribe();
+        }  else 
+	{
+           this.rootPage = LoginIonicPage;
+           unsubscribe();
+        }
+    });
+    
   }
 
   initializeApp() {

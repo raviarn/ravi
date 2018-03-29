@@ -13,7 +13,14 @@
 <ion-content>
 	<ion-item>
     		<ion-label color="primary" floating>User Name</ion-label>
-    		<ion-input type="text" name="username" max="10" min="2" ></ion-input>
+    		<ion-input type="text" [(ngModel)]="username" ></ion-input>
   	</ion-item>
+
+	<ion-item>
+                <ion-label color="primary" floating>Password</ion-label>
+                <ion-input type="password" [(ngModel)]="password" ></ion-input>
+        </ion-item>
+	<button ion-button round color="secondary" (click)="ClickedMe()" >Login Now</button>
+	<button ion-button round color="dark" (click)="goToRegister()" >Click To Register</button>
 
 </ion-content>

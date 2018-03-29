@@ -8,8 +8,24 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { LoginIonicPage } from '../pages/login-ionic/login-ionic';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthProvider } from '../providers/auth/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+
+    apiKey: "AIzaSyA0AnmZLmy3nIfcbidSkZiPbE4sOTCbFBc",
+    authDomain: "antt-f342a.firebaseapp.com",
+    databaseURL: "https://antt-f342a.firebaseio.com",
+    projectId: "antt-f342a",
+    storageBucket: "",
+    messagingSenderId: "50612689487"
+
+};
 
 @NgModule({
   declarations: [
@@ -22,6 +38,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +52,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider,
+    AngularFireAuth
   ]
 })
 export class AppModule {}
