@@ -44,11 +44,11 @@ export class MyApp {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
         if (!user) 
 	{
-           this.rootPage = HelloIonicPage;
+           this.rootPage = LoginIonicPage;
            unsubscribe();
         }  else 
 	{
-           this.rootPage = LoginIonicPage;
+           this.rootPage = HelloIonicPage;
            unsubscribe();
         }
     });
