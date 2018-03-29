@@ -7,6 +7,7 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { LoginIonicPage } from '../pages/login-ionic/login-ionic';
+import { RegistrationPage } from '../pages/registration/registration';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -33,7 +34,8 @@ export const firebaseConfig = {
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
-    LoginIonicPage
+    LoginIonicPage,
+    RegistrationPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ export const firebaseConfig = {
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
-    LoginIonicPage
+    LoginIonicPage,
+    RegistrationPage
   ],
   providers: [
     StatusBar,

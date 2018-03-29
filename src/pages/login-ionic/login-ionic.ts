@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ListPage } from '../list/list';
+import { RegistrationPage } from '../registration/registration';
 import { NavController } from 'ionic-angular';
+import firebase from 'firebase';
 
 @Component({
   selector: 'page-login-ionic',
@@ -11,14 +12,14 @@ export class LoginIonicPage {
 
   }
 
-  ClickedMe()
-  {
-	
+  loginUser(email: string, password: string): Promise<any> 
+  {	
+	return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
   goToRegister()
   {
-	this.navCtrl.push(ListPage);
+	this.navCtrl.push(RegistrationPage);
   }  
 
 }

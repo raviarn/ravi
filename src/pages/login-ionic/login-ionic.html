@@ -20,7 +20,7 @@
                 <ion-label color="primary" floating>Password</ion-label>
                 <ion-input type="password" [(ngModel)]="password" ></ion-input>
         </ion-item>
-	<button ion-button round color="secondary" (click)="ClickedMe()" >Login Now</button>
+	<button ion-button round color="secondary" (click)="loginUser(this.username,this.password)" >Login Now</button>
 	<button ion-button round color="dark" (click)="goToRegister()" >Click To Register</button>
 
 </ion-content>

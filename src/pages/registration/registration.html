@@ -1,0 +1,29 @@
+<ion-header>
+
+
+
+</ion-header>
+
+
+<ion-content padding>
+
+ <h3>Registration Page</h3><br><br>
+
+ <ion-item>
+    <ion-label color="primary" floating>User Name</ion-label>
+    <ion-input type="text" [(ngModel)]="regusername" ></ion-input>
+  </ion-item>
+ <ion-item>
+    <ion-label color="primary" floating>Email</ion-label>
+    <ion-input type="text" [(ngModel)]="regemail" ></ion-input>
+  </ion-item>
+ <ion-item>
+    <ion-label color="primary" floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="regpassword" ></ion-input>
+  </ion-item>
+  <br>
+  <button ion-button round (click)="registerUser()" >Register Me</button>
+
+</ion-content>
+
+
