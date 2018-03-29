@@ -13,8 +13,7 @@ export class LoginIonicPage {
 
   ClickedMe()
   {
-	console.log(this.username);
-	console.log(this.password);
+	
   }
 
   goToRegister()
