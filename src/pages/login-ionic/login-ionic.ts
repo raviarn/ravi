@@ -36,9 +36,9 @@ export class LoginIonicPage {
 
 	res=this.login(email,password);
 	
-	if(res.localeCampare("There is no user record corresponding to this identifier. The user may have been deleted"))
+	if(res.localeCompare("There is no user record corresponding to this identifier. The user may have been deleted"))
 	{
-		presentToast("Invalid user name");
+		this.presentToast("Invalid user name");
 	}
 
   }
