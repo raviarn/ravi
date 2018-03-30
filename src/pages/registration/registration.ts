@@ -17,7 +17,7 @@ export class RegistrationPage {
 			
   }
 
-  signupUser(email: string, password: string) {
+  signupUser(email:string, password:string) {
       
       return firebase
       .auth()
