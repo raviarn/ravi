@@ -44,6 +44,10 @@ export class LoginIonicPage {
 	{
 		this.presentToast("Invalid user name");
 	}
+	else
+	{
+		this.presentToast("else case");
+	}
 
   }
 
