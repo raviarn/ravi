@@ -10,13 +10,25 @@ export class RegistrationPage {
 
   }
 
-  registerUser()
-  {
-	email: string; password: string;
-	email =this.regemail;
-	password =this.regpassword;
+  registerUser(email:string, password:string)
+  {	
 
-		
+	this.signupUser(email, password);
+			
+  }
+
+  signupUser(email: string, password: string) {
+      
+      return firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then( newUser => {
+           firebase
+           .database()
+           .ref('/userProfile')
+           .child(newUser.uid)
+           .set({ email: email });
+       });
   }
 
 }
