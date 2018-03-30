@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RegistrationPage } from '../registration/registration';
+import { NavController } from 'ionic-angular';
 import firebase from 'firebase';
-import { ToastController } from 'ionic-angular';
 import {
   IonicPage,
   Loading,
@@ -12,50 +12,36 @@ import {
 
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
-import { AuthProvider } from '../../providers/auth/auth';
 
 @Component({
   selector: 'page-login-ionic',
   templateUrl: 'login-ionic.html'
 })
+
 export class LoginIonicPage {
- 
-  constructor(
+
+  public loginForm: FormGroup;
+  public loading: Loading;
+  
+constructor(
   public navCtrl: NavController,
   public loadingCtrl: LoadingController,
   public alertCtrl: AlertController,
   public authProvider: AuthProvider,
-  public toastCtrl: ToastController,
-  public formBuilder: FormBuilder) {
+  public formBuilder: FormBuilder ) {
 
-  }
-
-  loginUser(email: string, password: string) 
-  {	
-	var res;
-
-	res=this.login(email,password);
-	
-	if(res.localeCompare("There is no user record corresponding to this identifier. The user may have been deleted"))
-	{
-		this.presentToast("Invalid user name");
-	}
-
-  }
-
-  login(email:string,password:string): Promise<any>
-  {
-
-	return firebase.auth().signInWithEmailAndPassword(email, password);
-
-  }
-
-  presentToast(str:string) {
-    let toast = this.toastCtrl.create({
-      message: str,
-      duration: 3000
+	this.loginForm = formBuilder.group({
+           email: ['',
+              Validators.compose([Validators.required, EmailValidator.isValid])],
+      password: ['',
+      Validators.compose([Validators.minLength(6), Validators.required])]
     });
-    toast.present();
+
+  }
+
+  loginUser(email: string, password: string): Promise<any> 
+  {	
+	return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
   goToRegister()
