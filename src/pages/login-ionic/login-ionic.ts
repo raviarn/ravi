@@ -43,7 +43,7 @@ export class LoginIonicPage {
 
   }
 
-  login(email:string,password:string)
+  login(email:string,password:string): Promise<any>
   {
 
 	return firebase.auth().signInWithEmailAndPassword(email, password);
