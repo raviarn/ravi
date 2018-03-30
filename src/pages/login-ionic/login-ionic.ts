@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RegistrationPage } from '../registration/registration';
-import { AuthProviders, AuthMethods, AngularFire } from 'angularfire2';
 import firebase from 'firebase';
 import { ToastController } from 'ionic-angular';
 import {
