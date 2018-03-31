@@ -32,39 +32,37 @@ export class LoginIonicPage {
 
   loginUser(email: string, password: string) 
   {	
-	var res;
 
-	res=this.login(email,password);
+	let result :any;
+
+	this.login(email,password);
+
+  }
+
+  login(email:string,password:string){
+
+	var index:any;
+
+	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+
+		var errorCode = error.code;
+		var errorMessage = error.message;
+
+		index = errorMessage.localeCompare("There is no user record corresponding to this identifier. The user may have been deleted.");
+		alert(errorMessage);
+			
+	});
 	
-	var invalide = "There is no user record corresponding to this identifier. The user may have been deleted";
-
-	//	var index = res.localeCompare(invalide);	
-
-	if(res == invalide)
-	{
-		this.presentToast("Invalid user name");
-	}
-	else
-	{
-		this.presentToast("else case");
-	}
-
   }
 
-  login(email:string,password:string): Promise<any>
-  {
-
-	return firebase.auth().signInWithEmailAndPassword(email, password);
-
-  }
-
-  presentToast(str:string) {
-    let toast = this.toastCtrl.create({
-      message: str,
-      duration: 3000
-    });
-    toast.present();
-  }
+ presentToast() {
+                let toast = this.toastCtrl.create({
+                message: 'User was added successfully',
+                duration: 3000,
+                position: 'top'
+                });
+        toast.present();
+        }
 
   goToRegister()
   {
