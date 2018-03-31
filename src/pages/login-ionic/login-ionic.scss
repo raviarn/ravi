@@ -1,5 +1,32 @@
 page-login-ionic {
 
+.login-background{
+
+	background-color: #04042b;
+}
+
+.buttonone {
+        border: none;
+	position:relative;
+	left: 10px;
+	margin:auto;
+	right: 5PX;
+	top: 1px;
+	width:45%;
+}
+
+
+.item-input {
+	border: none;
+	position: relative;   
+	color: white;
+    left: 10px;
+    right: 10PX;
+    top: 1px;
+    background-color: transparent;
+    width:90%;
+}
+
 .invalid {
     border-bottom: 1px solid #ff6153;
   }

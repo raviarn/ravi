@@ -19,7 +19,7 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'login-ionic.html'
 })
 export class LoginIonicPage {
- 
+
   constructor(
   public navCtrl: NavController,
   public loadingCtrl: LoadingController,
@@ -33,24 +33,37 @@ export class LoginIonicPage {
   loginUser(email: string, password: string) 
   {	
 
-	let result :any;
+	var result :any;
 
 	this.login(email,password);
-
   }
 
   login(email:string,password:string){
 
 	var index:any;
 
-	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+	firebase.auth().signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
+
+	alert("Login Success");
+	
+   }).catch(function(error) {
 
 		var errorCode = error.code;
 		var errorMessage = error.message;
 
+		console.log(error.message);
+
 		index = errorMessage.localeCompare("There is no user record corresponding to this identifier. The user may have been deleted.");
-		alert(errorMessage);
-			
+
+		if(errorMessage == 'There is no user record corresponding to this identifier. The user may have been deleted.')
+		{
+			alert("Invalid Username");
+		}
+
+		if(errorMessage == 'The password is invalid or the user does not have a password.')
+		{
+			alert("Invalid Password");
+		}			
 	});
 	
   }
