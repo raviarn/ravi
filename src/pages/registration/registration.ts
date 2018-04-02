@@ -42,7 +42,7 @@ export class RegistrationPage {
 
 	}catch(e){
 
-		console.error(e);
+		this.presentToast("Sorry some error occurs");
 	}
   }
 

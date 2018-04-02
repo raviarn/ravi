@@ -45,15 +45,13 @@ export class LoginIonicPage {
 
 	const res = firebase.auth().signInWithEmailAndPassword(email, password);
 
-	console.log(res);	
-
 	this.presentToast("Login Success");
 
-	this.navCtrl.push(HelloIonicPage);
+	this.navCtrl.setRoot(HelloIonicPage);
 	
 	}catch(e){
 
-		console.error(e);
+		this.presentToast("Sorry Some error occurs");
 
 	}
   }

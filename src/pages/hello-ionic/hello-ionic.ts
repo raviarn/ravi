@@ -14,7 +14,7 @@ export class HelloIonicPage {
 
   }
   
-  logoutUser(): Promise<void> {
+  logoutUser() {
 
      try{     
 
@@ -26,7 +26,7 @@ export class HelloIonicPage {
 
     }catch(e){
 
-	console.error(e);
+	this.presentToast("Sorry Some error occurs");
 
     }
        
