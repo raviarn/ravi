@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RegistrationPage } from '../registration/registration';
+import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 import firebase from 'firebase';
 import { ToastController } from 'ionic-angular';
 import {
@@ -40,37 +41,26 @@ export class LoginIonicPage {
 
   login(email:string,password:string){
 
-	var index:any;
+	try{
 
-	firebase.auth().signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
+	const res = firebase.auth().signInWithEmailAndPassword(email, password);
 
-	alert("Login Success");
+	console.log(res);	
+
+	this.presentToast("Login Success");
+
+	this.navCtrl.push(HelloIonicPage);
 	
-   }).catch(function(error) {
+	}catch(e){
 
-		var errorCode = error.code;
-		var errorMessage = error.message;
+		console.error(e);
 
-		console.log(error.message);
-
-		index = errorMessage.localeCompare("There is no user record corresponding to this identifier. The user may have been deleted.");
-
-		if(errorMessage == 'There is no user record corresponding to this identifier. The user may have been deleted.')
-		{
-			alert("Invalid Username");
-		}
-
-		if(errorMessage == 'The password is invalid or the user does not have a password.')
-		{
-			alert("Invalid Password");
-		}			
-	});
-	
+	}
   }
 
- presentToast() {
+ presentToast(value:string) {
                 let toast = this.toastCtrl.create({
-                message: 'User was added successfully',
+                message: value,
                 duration: 3000,
                 position: 'top'
                 });
