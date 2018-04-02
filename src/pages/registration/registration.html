@@ -4,9 +4,10 @@
 
 
 <ion-content padding>
+    <div style="text-align:center;">
 
- <h3>Registration Page</h3><br><br>
-
+      <br>
+ <h3>Registration Page</h3>
  <ion-item>
     <ion-label color="primary" floating>User Name</ion-label>
     <ion-input type="text" [(ngModel)]="regusername" ></ion-input>
@@ -26,6 +27,6 @@
   <br>
   <button ion-button round (click)="registerUser(this.regemail,this.regpassword,this.regconfpassword,this.regusername)">Register Me</button>
 
+</div>
+
 </ion-content>
-
-

@@ -50,11 +50,11 @@ export class RegistrationPage {
 		this.presentToast("Password and conform password must be same");
                 return;
 	}
-	this.signupUser(email, password);
+	this.signupUser(email, password,username);
 			
   }
 
-  signupUser(email:string, password:string) {
+  signupUser(email:string, password:string,username:string) {
 
 	try{      
 
@@ -66,7 +66,7 @@ export class RegistrationPage {
            .database()
            .ref('/userProfile')
            .child(newUser.uid)
-           .set({ email: email });
+		   .set({ email: email });
        });
 	
 	this.presentToast("User created");	

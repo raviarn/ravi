@@ -1,16 +1,10 @@
 <ion-header>
 
-<ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Login Page</ion-title>
-  </ion-navbar>
-
-
 </ion-header>
 
 <ion-content class="login-background">
+
+<ion-list>
 
 	<br>     
 	<ion-item>
@@ -21,9 +15,16 @@
 	<ion-item>
                 <ion-label color="primary" floating>Password</ion-label>
                 <ion-input type="password" [(ngModel)]="password" ></ion-input>
-        </ion-item>
-	<br>
-	<button ion-button class="buttonone" round color="secondary" type="submit" (click)="loginUser(this.username,this.password)" >Login Now</button>&emsp;
-	<button ion-button class="buttonone" round color="dark" (click)="goToRegister()" >Click To Register</button>
+	</ion-item>
+<br><br><br>
+<div style="text-align:center;">
+	<button ion-button round color="primary" type="submit" (click)="loginUser(this.username,this.password)" >Login Now</button>&emsp;
+</div>
+
+<div style="text-align:center;">
+	<p (click)="goToRegister()">Need an Account? Click Me.</p>
+</div>
+
+</ion-list>
 
 </ion-content>

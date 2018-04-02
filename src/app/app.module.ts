@@ -8,6 +8,10 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { LoginIonicPage } from '../pages/login-ionic/login-ionic';
 import { RegistrationPage } from '../pages/registration/registration';
+import { MainPage } from '../pages/mainpage/mainpage';
+import { InboxPage } from '../pages/inbox/inbox';
+import { MessagesPage } from '../pages/messages/messages';
+import { UserProfilePage } from '../pages/userprofile/userprofile';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -35,7 +39,11 @@ export const firebaseConfig = {
     ItemDetailsPage,
     ListPage,
     LoginIonicPage,
-    RegistrationPage
+    RegistrationPage,
+    MainPage,
+    InboxPage,
+    MessagesPage,
+    UserProfilePage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,11 @@ export const firebaseConfig = {
     ItemDetailsPage,
     ListPage,
     LoginIonicPage,
-    RegistrationPage
+    RegistrationPage,
+    MainPage,
+    InboxPage,
+    MessagesPage,
+    UserProfilePage
   ],
   providers: [
     StatusBar,

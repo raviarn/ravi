@@ -5,6 +5,10 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
 import { LoginIonicPage } from '../pages/login-ionic/login-ionic';
+import { MainPage } from '../pages/mainpage/mainpage';
+import { InboxPage } from '../pages/inbox/inbox';
+import { MessagesPage } from '../pages/messages/messages';
+import { UserProfilePage } from '../pages/userprofile/userprofile';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 
@@ -48,7 +52,7 @@ export class MyApp {
            unsubscribe();
         }  else 
 	{
-           this.rootPage = HelloIonicPage;
+           this.rootPage = MainPage;
            unsubscribe();
         }
     });

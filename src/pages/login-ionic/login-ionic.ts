@@ -14,6 +14,7 @@ import {
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
+import { MainPage } from '../mainpage/mainpage';
 
 @Component({
   selector: 'page-login-ionic',
@@ -60,7 +61,7 @@ export class LoginIonicPage {
 
 		this.presentToast("Login Success");
 
-		this.navCtrl.setRoot(HelloIonicPage);
+		this.navCtrl.setRoot(MainPage);
 
 	    }
 
@@ -75,7 +76,7 @@ export class LoginIonicPage {
                 let toast = this.toastCtrl.create({
                 message: value,
                 duration: 3000,
-                position: 'top'
+                position: 'bottom'
                 });
         toast.present();
         }
