@@ -1,7 +1,5 @@
 <ion-header>
 
-
-
 </ion-header>
 
 
@@ -21,8 +19,12 @@
     <ion-label color="primary" floating>Password</ion-label>
     <ion-input type="password" [(ngModel)]="regpassword" ></ion-input>
   </ion-item>
+ <ion-item>
+    <ion-label color="primary" floating>Confirm Password</ion-label>
+    <ion-input type="password" [(ngModel)]="regconfpassword" ></ion-input>
+  </ion-item>
   <br>
-  <button ion-button round (click)="registerUser(this.regemail,this.regpassword)">Register Me</button>
+  <button ion-button round (click)="registerUser(this.regemail,this.regpassword,this.regconfpassword,this.regusername)">Register Me</button>
 
 </ion-content>
 

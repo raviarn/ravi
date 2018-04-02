@@ -14,9 +14,42 @@ export class RegistrationPage {
 
   }
 
-  registerUser(email:string, password:string)
+  registerUser(email:string, password:string, conf:string,username:string)
   {	
 
+	if(!username)
+	{
+		this.presentToast("Enter user name");
+                return;
+	}
+		
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	if(!re.test(email)) {
+
+		this.presentToast("Invalid email");
+		return;
+
+	}
+
+	if(!password)
+	{
+		this.presentToast("Enter password");
+                return;
+	}
+
+	if(password.length<6)
+	{
+		this.presentToast("Password length should be atleast 6 characters");
+		return;
+	}
+
+	var index = password.localeCompare(conf);
+
+	if(index !=0)
+	{
+		this.presentToast("Password and conform password must be same");
+                return;
+	}
 	this.signupUser(email, password);
 			
   }
@@ -59,4 +92,3 @@ export class RegistrationPage {
   }
 
 }
-

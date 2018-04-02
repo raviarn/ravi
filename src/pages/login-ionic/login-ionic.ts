@@ -34,24 +34,39 @@ export class LoginIonicPage {
   loginUser(email: string, password: string) 
   {	
 
-	var result :any;
+	if(!email)
+	{
+		this.presentToast("Enter email");
+                return;
+	}
+
+	if(!password)
+	{
+		this.presentToast("Enter password");
+                return;
+	}
 
 	this.login(email,password);
   }
 
-  login(email:string,password:string){
+  async login(email:string,password:string){
 
 	try{
 
-	const res = firebase.auth().signInWithEmailAndPassword(email, password);
+	    const res = await firebase.auth().signInWithEmailAndPassword(email, password);
 
-	this.presentToast("Login Success");
+	    if(res)
+	    {
 
-	this.navCtrl.setRoot(HelloIonicPage);
-	
+		this.presentToast("Login Success");
+
+		this.navCtrl.setRoot(HelloIonicPage);
+
+	    }
+
 	}catch(e){
 
-		this.presentToast("Sorry Some error occurs");
+		this.presentToast("Enter valid email and password");
 
 	}
   }
@@ -67,8 +82,9 @@ export class LoginIonicPage {
 
   goToRegister()
   {
+
 	this.navCtrl.push(RegistrationPage);
+
   }  
 
 }
-
