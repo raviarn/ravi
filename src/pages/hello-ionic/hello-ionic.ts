@@ -11,7 +11,8 @@ export class HelloIonicPage {
   }
   
   logoutUser(): Promise<void> {
-     
+
+	alert("logout success ");     
      return firebase.auth().signOut();
   
   }
