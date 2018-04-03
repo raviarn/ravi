@@ -12,6 +12,7 @@ import { MainPage } from '../pages/mainpage/mainpage';
 import { InboxPage } from '../pages/inbox/inbox';
 import { MessagesPage } from '../pages/messages/messages';
 import { UserProfilePage } from '../pages/userprofile/userprofile';
+import { InsertPage } from '../pages/insert/insert';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -43,7 +44,8 @@ export const firebaseConfig = {
     MainPage,
     InboxPage,
     MessagesPage,
-    UserProfilePage
+    UserProfilePage,
+    InsertPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ export const firebaseConfig = {
     MainPage,
     InboxPage,
     MessagesPage,
-    UserProfilePage
+    UserProfilePage,
+    InsertPage
   ],
   providers: [
     StatusBar,

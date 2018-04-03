@@ -3,6 +3,8 @@ import firebase from 'firebase';
 import { ToastController } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import {LoginIonicPage} from '../login-ionic/login-ionic'
+import {InsertPage} from '../insert/insert'
+import { App } from 'ionic-angular';
 
 @Component({
   selector: 'page-userprofile',
@@ -13,24 +15,36 @@ export class UserProfilePage {
   public firebaseUserref: any;
   public firebaseUser: any;
   public resultt: any;
-    constructor(private toastCtrl: ToastController,
-	      public nav:NavController) {
+  constructor(private toastCtrl: ToastController,public nav:NavController,public app: App) {
 
-        this.firebaseAuth = firebase.auth();
-        this.firebaseUser = firebase.auth().currentUser.uid;
-        this.firebaseUserref = firebase.database().ref('users');
-        console.log(this.firebaseUser);
-        
+    this.firebaseAuth = firebase.auth();
+    this.firebaseUser = firebase.auth().currentUser.uid;
+    this.firebaseUserref = firebase.database().ref('users');
+    
+    var userId = firebase.auth().currentUser.uid;
+    firebase.database().ref('/userProfile/' + userId+'/').once('value').then(function(snapshot) {
+      var username = (snapshot.val().email) || 'Anonymous';
+      document.getElementById("emailid").innerText = username;
+
+    });
+
+    console.log(this.firebaseUser);       
   }
 
   logoutUser() {
     try{     
 	    const result =  firebase.auth().signOut();
 	    this.presentToast("Logout success");
-	    this.nav.setRoot(LoginIonicPage);	
+      this.app.getRootNav().setRoot(LoginIonicPage);
     }catch(e){
 	    this.presentToast("Sorry Some error occurs");
     }
+  }
+
+  goToQuery() {
+
+    this.app.getRootNav().setRoot(InsertPage);
+
   }
 
   presentToast(value:string) {
