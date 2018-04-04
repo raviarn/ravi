@@ -4,6 +4,7 @@ import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { UserProfilePage } from '../userprofile/userprofile';
+import { MainPage } from '../mainpage/mainpage';
 
 @Component({
   selector: 'page-insert',
@@ -11,9 +12,13 @@ import { UserProfilePage } from '../userprofile/userprofile';
 })
 export class InsertPage {
 
+  public firebaseUserId: any;
+
     constructor(private toastCtrl: ToastController,
         public nav:NavController,
         private alertCtrl: AlertController) {
+
+          this.firebaseUserId = firebase.auth().currentUser.uid;
 
   }
 
@@ -125,6 +130,33 @@ export class InsertPage {
 
     var ran = Math.floor(Math.random() * (1000000 - 10 + 1)) + 10;
     var random = ran.toString();
+
+    var QueryData = {
+      user_id:this.firebaseUserId,
+      query: query,
+      message: message
+    };
+  
+    // Get a key for a new Post.
+    var newPostKey = firebase.database().ref().child('Queries').child(selected).child(random).push().key;
+  
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    var updates = {};
+    updates['SpeedQueries/'+selected+'/' + newPostKey] = QueryData;
+  
+    var msgupdates = {};
+    msgupdates['Queries/'+newPostKey] = QueryData;
+
+    try{
+      firebase.database().ref().update(updates);
+      firebase.database().ref().update(msgupdates);
+      this.presentToast("Query added");
+    }catch(e)
+    {
+      this.presentToast("please check your internrt connection");
+    }
+
+    this.nav.push(MainPage);
 
   }
 
