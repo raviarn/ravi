@@ -3,14 +3,14 @@ import firebase from 'firebase';
 import { ToastController } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { DataSnapshot } from '@firebase/database-types';
-
+import { InsideQueryPage } from '../insidequery/insidequery';
 @Component({
   selector: 'page-messages',
   templateUrl: 'messages.html'
 })
 export class MessagesPage {
 
-    allQueries: Array<{user_id: string, query: string}>;
+    allQueries: Array<{user_id: string, query: string,email: string,desc:string,answer:string}>;
   
     constructor(private toastCtrl: ToastController,
 	  public nav:NavController) {
@@ -32,6 +32,9 @@ export class MessagesPage {
               this.allQueries.push({
                 user_id: everyone.user_id,
                 query: everyone.query,
+                email: everyone.email,
+                desc: everyone.message,
+                answer:everyone.answers,
               });
               console.log(this.allQueries.length);
               console.log(everyone.query);
@@ -52,6 +55,14 @@ export class MessagesPage {
       });
 
      toast.present();
+    }
+
+    goToInsideQuery(event, item){
+
+        this.nav.push(InsideQueryPage, {
+          item: item
+        });
+
     }
 
 }

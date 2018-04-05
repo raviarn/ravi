@@ -1,0 +1,13 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content>
+
+    <div class="answerround">
+        <ion-textarea rows="10" id="messageInputBox" placeholder="Description here" [(ngModel)]="writtenMsg" (input)="change()" required  ></ion-textarea>
+
+        <br>
+    </div>
+        <button ion-button block (click)="addMyAnswer(this.writtenMsg)">Add my answer</button>
+</ion-content>

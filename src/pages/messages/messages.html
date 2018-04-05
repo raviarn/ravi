@@ -8,9 +8,12 @@
 
 <ion-content padding>
 
-    <ion-list>
-            <button ion-item *ngFor="let item of allQueries">
-                <div class="item-note" item-right>
+    <ion-list class="item-content">
+            <button ion-item *ngFor="let item of allQueries" (click)="goToInsideQuery($event,item)">
+                <div class="emaildec" item-center>
+                    {{item.email}}<br>
+                </div>
+                <div class="querydec" item-center>
                     {{item.query}}
                 </div>
             </button>

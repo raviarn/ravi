@@ -43,7 +43,11 @@ export class UserProfilePage {
 
   goToQuery() {
 
-    this.app.getRootNav().setRoot(InsertPage);
+    var email_id = document.getElementById('emailid').textContent;
+
+    this.app.getRootNav().setRoot(InsertPage,{
+      email_id: email_id
+    });
 
   }
 

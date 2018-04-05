@@ -7,6 +7,7 @@ import { ListPage } from '../pages/list/list';
 import { LoginIonicPage } from '../pages/login-ionic/login-ionic';
 import { MainPage } from '../pages/mainpage/mainpage';
 import { InboxPage } from '../pages/inbox/inbox';
+import { InsideQueryPage } from '../pages/insidequery/insidequery';
 import { MessagesPage } from '../pages/messages/messages';
 import { UserProfilePage } from '../pages/userprofile/userprofile';
 import { AngularFireAuth } from 'angularfire2/auth';

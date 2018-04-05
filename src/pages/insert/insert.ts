@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import firebase from 'firebase';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, } from 'ionic-angular';
 import { UserProfilePage } from '../userprofile/userprofile';
 import { MainPage } from '../mainpage/mainpage';
 
@@ -13,13 +13,17 @@ import { MainPage } from '../mainpage/mainpage';
 export class InsertPage {
 
   public firebaseUserId: any;
+  public receivedValue: any;
 
     constructor(private toastCtrl: ToastController,
         public nav:NavController,
+        public navParams: NavParams,
         private alertCtrl: AlertController) {
 
-          this.firebaseUserId = firebase.auth().currentUser.uid;
-
+          this.firebaseUserId = firebase.auth().currentUser.uid;  
+          this.receivedValue = navParams.get('email_id');
+          console.log(this.receivedValue+"insert");
+         
   }
 
   change() {
@@ -131,15 +135,19 @@ export class InsertPage {
     var ran = Math.floor(Math.random() * (1000000 - 10 + 1)) + 10;
     var random = ran.toString();
 
-    var QueryData = {
-      user_id:this.firebaseUserId,
-      query: query,
-      message: message
-    };
+    
   
     // Get a key for a new Post.
     var newPostKey = firebase.database().ref().child('Queries').child(selected).child(random).push().key;
   
+    var QueryData = {
+      user_id:this.firebaseUserId,
+      email:this.receivedValue,
+      query: query,
+      message: message,
+      answers:newPostKey
+    };
+
     // Write the new post's data simultaneously in the posts list and the user's post list.
     var updates = {};
     updates['SpeedQueries/'+selected+'/' + newPostKey] = QueryData;
