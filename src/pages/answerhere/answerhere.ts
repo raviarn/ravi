@@ -3,6 +3,7 @@ import { RegistrationPage } from '../registration/registration';
 import { NavController } from 'ionic-angular';
 import firebase from 'firebase';
 import { ToastController } from 'ionic-angular';
+import { MainPage } from '../mainpage/mainpage';
 import {
   IonicPage,
   Loading,
@@ -34,6 +35,8 @@ constructor(
     this.selected = navParams.get('item');
     // var emai = "From:"+this.selectedItem;
     console.log(this.selected);
+
+    this.username = firebase.auth().currentUser;
   
     var userId = firebase.auth().currentUser.uid;
 
@@ -71,6 +74,7 @@ constructor(
       var random = ran.toString();
       
       var AnswerData = {
+        name:this.username.email,
         user_id:this.firebaseUserId,
         answer:Writtenanswer,
       };
@@ -85,6 +89,8 @@ constructor(
       {
         this.presentToast("please check your internrt connection");
       }
+
+      this.navCtrl.setRoot(MainPage);
 
   }
 

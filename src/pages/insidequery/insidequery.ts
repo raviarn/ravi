@@ -17,6 +17,7 @@ import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
 import { MainPage } from '../mainpage/mainpage';
 import { AnswerHerePage } from '../answerhere/answerhere';
+import { SendMessagePage } from '../sendmessage/sendmessage';
 
 @Component({
   selector: 'page-insidequery',
@@ -26,7 +27,7 @@ export class InsideQueryPage {
 
   selectedItem: any;
 
-  allAnswers: Array<{user_id: string,answer:string}>;
+  allAnswers: Array<{name: string,answer:string,user_id:string}>;
 
   constructor(
   public navCtrl: NavController,
@@ -54,8 +55,9 @@ export class InsideQueryPage {
               //catched every single child
               //And the added to the list
               this.allAnswers.push({
-                user_id: everyone.user_id,
+                name: everyone.name,
                 answer: everyone.answer,
+                user_id:everyone.user_id,
               });
               console.log(this.allAnswers.length); 
               return false; 
@@ -78,6 +80,14 @@ export class InsideQueryPage {
 
     this.navCtrl.push(AnswerHerePage,{
       item: this.selectedItem
+    });
+
+  }
+
+  goToSendMessage(item){
+
+    this.navCtrl.push(SendMessagePage,{
+      item: item
     });
 
   }

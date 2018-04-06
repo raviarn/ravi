@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import { ToastController } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import {HelloIonicPage} from '../hello-ionic/hello-ionic'
+import { MainPage } from '../mainpage/mainpage';
 
 @Component({
   selector: 'page-registration',
@@ -71,7 +72,7 @@ export class RegistrationPage {
 	
 	this.presentToast("User created");	
 
-	this.nav.setRoot(HelloIonicPage);
+	this.nav.setRoot(MainPage);
 
 	}catch(e){
 

@@ -12,24 +12,24 @@
 
 <div>
     <br>
-    <p class="emaildec" >{{this.selectedItem.email}}</p>
-    <div class="queryround">
+    <p class="emaildec" ><b>{{this.selectedItem.email}}</b></p>
+    <div class="querymainround">
         <p><b>{{this.selectedItem.query}}</b></p>
         <p>{{this.selectedItem.desc}}
         </p>
     </div>
-    <h5>Answers</h5>
+    <h5 class="answerpad">Answers</h5>
 </div>
 
 <ion-list class="item-content">
-        <button ion-item *ngFor="let item of allAnswers">
+        <button ion-item *ngFor="let item of allAnswers" (click)="goToSendMessage(item)">
             <div item-left>
-                <p class="emaildec" >{{item.user_id}}</p>
-                <p class="queryround">{{item.answer}}</p><br>
+                <p class="emaildec" >{{item.name}}</p><h6 class="querydec">:{{item.user_id}}</h6>
+                <p class="queryround" style="text-align:center;">{{item.answer}}</p><br>
             </div>
         </button>
 </ion-list>
-
-<button ion-button block (click)="goToAnswerHere()">Add your answer</button>
-
+<div style="text-align:center;">
+<button ion-button round (click)="goToAnswerHere()">Add my answer</button><br><br>
+</div>
 </ion-content>
