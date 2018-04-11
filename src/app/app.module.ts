@@ -17,7 +17,10 @@ import { InsideQueryPage } from '../pages/insidequery/insidequery';
 import { AnswerHerePage } from '../pages/answerhere/answerhere';
 import { SendMessagePage } from '../pages/sendmessage/sendmessage';
 import { ReplyPage } from '../pages/reply/reply';
+import { ShowLocatePage } from '../pages/showlocate/showlocate';
 
+import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps,Marker,MarkerOptions } from '@ionic-native/google-maps';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -54,7 +57,8 @@ export const firebaseConfig = {
     InsideQueryPage,
     AnswerHerePage,
     SendMessagePage,
-    ReplyPage
+    ReplyPage,
+    ShowLocatePage
   ],
   imports: [
     BrowserModule,
@@ -78,14 +82,17 @@ export const firebaseConfig = {
     InsideQueryPage,
     AnswerHerePage,
     SendMessagePage,
-    ReplyPage
+    ReplyPage,
+    ShowLocatePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    AngularFireAuth
+    AngularFireAuth,
+    Geolocation,
+    GoogleMaps
   ]
 })
 export class AppModule {}

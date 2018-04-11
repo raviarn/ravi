@@ -27,7 +27,7 @@ export class InsideQueryPage {
 
   selectedItem: any;
 
-  allAnswers: Array<{name: string,answer:string,user_id:string}>;
+  allAnswers: Array<{name: string,answer:string,user_id:string,longitude:string,latitude:string}>;
 
   constructor(
   public navCtrl: NavController,
@@ -58,6 +58,8 @@ export class InsideQueryPage {
                 name: everyone.name,
                 answer: everyone.answer,
                 user_id:everyone.user_id,
+                longitude:everyone.longitude,
+                latitude:everyone.latitude,
               });
               console.log(this.allAnswers.length); 
               return false; 
@@ -81,6 +83,15 @@ export class InsideQueryPage {
     this.navCtrl.push(AnswerHerePage,{
       item: this.selectedItem
     });
+
+  }
+
+  goTOShowLocate(name:string,long:string,lat:string)
+  {
+
+    console.log(name);
+    console.log(long);
+    console.log(lat);
 
   }
 

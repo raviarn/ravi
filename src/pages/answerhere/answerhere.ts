@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import firebase from 'firebase';
 import { ToastController } from 'ionic-angular';
 import { MainPage } from '../mainpage/mainpage';
+import { Geolocation } from '@ionic-native/geolocation';
 import {
   IonicPage,
   Loading,
@@ -25,11 +26,14 @@ export class AnswerHerePage {
   selected: any;
   public firebaseUserId: any;
   public username:any;
+  public lat:any;
+  public lon:any
 
 constructor(
   public navCtrl: NavController,
   public toastCtrl: ToastController,
-  public navParams: NavParams) {
+  public navParams: NavParams,
+  private geo: Geolocation) {
 
     this.firebaseUserId = firebase.auth().currentUser.uid;
     this.selected = navParams.get('item');
@@ -39,6 +43,8 @@ constructor(
     this.username = firebase.auth().currentUser;
   
     var userId = firebase.auth().currentUser.uid;
+
+    this.ionViewOldLoad();
 
   }
 
@@ -77,7 +83,12 @@ constructor(
         name:this.username.email,
         user_id:this.firebaseUserId,
         answer:Writtenanswer,
+        latitude:this.lat,
+        longitude:this.lon
       };
+
+      console.log(this.lat);
+      console.log(this.lon);
 
       var answerupdates = {};
       answerupdates['Answers/'+this.selected.answer+'/'+random] = AnswerData;
@@ -91,6 +102,31 @@ constructor(
       }
 
       this.navCtrl.setRoot(MainPage);
+
+  }
+
+  ionViewOldLoad(){
+
+    this.geo.getCurrentPosition().then((resp) => {
+      // resp.coords.latitude
+      // resp.coords.longitude
+
+      console.log(resp.coords.latitude);
+      console.log(resp.coords.longitude);
+
+      this.lat = resp.coords.latitude;
+      this.lon = resp.coords.longitude;
+
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+     
+     let watch = this.geo.watchPosition();
+     watch.subscribe((data) => {
+      // data can be a set of coordinates, or an error (if an error occurred).
+      // data.coords.latitude
+      // data.coords.longitude
+     });
 
   }
 

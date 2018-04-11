@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        Showing Location
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <div #map id="map"></div>
+    
+    <p>Lat: {{ lat }}</p>
+    <p>Lon: {{ lon }}</p>
+  
+    <button (click)="ionViewOldLoad()">click</button>
+  
+  </ion-content>
+  
